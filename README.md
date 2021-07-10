@@ -18,7 +18,7 @@ Eg: C:\Users\user\Music or /home/user/Music
 
 The playlist will be downloaded and saved to the specified location as mp3 music files.
 
-#Dependencies
+# Dependencies
 
 Requires pytube and moviepy
 
