@@ -16,10 +16,24 @@ print("Enter Location to Save Your File: ")
 
 Location = input()
 
+print("Analyzing Playlist...")
+
 playlist = Playlist(url)
 
+length = len(playlist)
+
+print(f"Found {length} Videos in Playlist... Downloading {length} Videos...")
+
+print("Starting Download...")
+
+i = 1
+
 for u in playlist:
+    print(f"Downloading Video {i}...")
+
     fl = YouTube(u).streams.first().download(Location)
+
+    print("Converting to mp3...")
 
     new_file = mp.AudioFileClip(fl)
 
@@ -28,3 +42,5 @@ for u in playlist:
     new_file.write_audiofile(flmp3)
 
     os.remove(fl)
+
+    print(f"Finished Downloading... File saved to {flmp3}")
