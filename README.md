@@ -17,3 +17,9 @@ Copy paste the URL and it will ask you the location to save the downloaded MP3's
 Eg: C:\Users\user\Music or /home/user/Music
 
 The playlist will be downloaded and saved to the specified location as mp3 music files.
+
+#Dependencies
+
+Requires pytube and moviepy
+
+pytube is required to download youtube videos and moviepy is required to convert them to mp3.
