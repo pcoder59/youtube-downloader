@@ -44,3 +44,5 @@ for u in playlist:
     os.remove(fl)
 
     print(f"Finished Downloading... File saved to {flmp3}")
+
+    i = i + 1
