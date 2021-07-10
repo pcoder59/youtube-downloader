@@ -1,48 +1,42 @@
 from pytube import YouTube
-
 from pytube import Playlist
-
 import os
-
 import moviepy.editor as mp
-
 import re
 
-print("Enter URL of YouTube Playlist: ")
+def DowloadPlaylistToMp3(playlist, Location):
+    i = 1
 
-url = input()
+    for u in playlist:
+        print(f"Downloading Video {i}...")
+        fl = YouTube(u).streams.first().download(Location)
+        
+        print("Converting to mp3...")
+        new_file = mp.AudioFileClip(fl)
+        flmp3 = fl.replace(fl[len(fl)-1], "3")
+        new_file.write_audiofile(flmp3)
+        os.remove(fl)
 
-print("Enter Location to Save Your File: ")
+        print(f"Finished Downloading... File saved to {flmp3}")
+        i = i + 1
 
-Location = input()
+def PlaylistToMp3():
+    print("Enter URL of YouTube Playlist: ")
+    url = input()
 
-print("Analyzing Playlist...")
+    print("Enter Location to Save Your File: ")
+    Location = input()
 
-playlist = Playlist(url)
+    print("Analyzing Playlist...")
+    playlist = Playlist(url)
+    length = len(playlist)
+    print(f"Found {length} Videos in Playlist... Downloading {length} Videos...")
 
-length = len(playlist)
+    print("Starting Download...")
 
-print(f"Found {length} Videos in Playlist... Downloading {length} Videos...")
+    DowloadPlaylistToMp3(playlist, Location)
 
-print("Starting Download...")
+def main():
+    PlaylistToMp3()
 
-i = 1
-
-for u in playlist:
-    print(f"Downloading Video {i}...")
-
-    fl = YouTube(u).streams.first().download(Location)
-
-    print("Converting to mp3...")
-
-    new_file = mp.AudioFileClip(fl)
-
-    flmp3 = fl.replace(fl[len(fl)-1], "3")
-
-    new_file.write_audiofile(flmp3)
-
-    os.remove(fl)
-
-    print(f"Finished Downloading... File saved to {flmp3}")
-
-    i = i + 1
+main()
