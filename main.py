@@ -20,6 +20,32 @@ def DowloadPlaylistToMp3(playlist, Location):
         print(f"Finished Downloading... File saved to {flmp3}")
         i = i + 1
 
+
+def DownloadVideotoMp3(youtube, Location):
+    print("Downloading Video...")
+    fl = youtube.streams.first().download(Location)
+
+    print("Converting to mp3...")
+    new_file = mp.AudioFileClip(fl)
+    flmp3 = fl.replace(fl[len(fl)-1], "3")
+    new_file.write_audiofile(flmp3)
+    os.remove(fl)
+
+    print(f"Finished Downloading... File saved to {flmp3}")
+
+def VideotoMp3():
+    print("Enter URL of YouTube Video: ")
+    url = input()
+    print("Enter Location to Save Your File: ")
+    Location = input()
+
+    print("Analyzing Video...")
+    youtube = YouTube(url)
+
+    print("Starting Download...")
+
+    DownloadVideotoMp3(youtube, Location)
+
 def PlaylistToMp3():
     print("Enter URL of YouTube Playlist: ")
     url = input()
