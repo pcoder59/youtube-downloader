@@ -63,6 +63,21 @@ def PlaylistToMp3():
     DowloadPlaylistToMp3(playlist, Location)
 
 def main():
-    PlaylistToMp3()
+    cont = True
+    while(cont):
+        print("What Do You Want to Do:")
+        print("1. YouTube to mp3")
+        print("2. YouTube Playlist to mp3")
+        print("3. Exit")
+        print("Enter Your Choice: ")
+        Choice = int(input())
+        if Choice == 1:
+            VideotoMp3()
+        elif Choice == 2:
+            PlaylistToMp3()
+        elif Choice == 3:
+            cont = False
+        else:
+            print("Invalid Choice!!! Enter 1, 2 or 3!!!")
 
 main()
