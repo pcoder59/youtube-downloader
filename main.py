@@ -33,6 +33,25 @@ def DownloadVideotoMp3(youtube, Location):
 
     print(f"Finished Downloading... File saved to {flmp3}")
 
+def DownloadVideo(youtube, Location):
+    print("Downloading Video...")
+    fl = youtube.streams.first().download(Location)
+    print(f"Finished Downloading... File saved to {fl}")
+
+def Analyzing(choice):
+    print("Enter URL of YouTube Video: ")
+    url = input()
+    print("Enter Location to Save Your File: ")
+    Location = input()
+
+    if choice == 1:
+        print("Analyzing Video...")
+        youtube = YouTube(url)
+
+        print("Starting Download...")
+
+        DownloadVideo(youtube, Location)
+
 def VideotoMp3():
     print("Enter URL of YouTube Video: ")
     url = input()
