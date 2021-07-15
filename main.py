@@ -85,18 +85,21 @@ def main():
     cont = True
     while(cont):
         print("What Do You Want to Do:")
-        print("1. YouTube to mp3")
-        print("2. YouTube Playlist to mp3")
-        print("3. Exit")
+        print("1. YouTube Video Download")
+        print("2. YouTube to mp3")
+        print("3. YouTube Playlist to mp3")
+        print("4. Exit")
         print("Enter Your Choice: ")
         Choice = int(input())
         if Choice == 1:
-            VideotoMp3()
+            Analyzing(1)
         elif Choice == 2:
-            PlaylistToMp3()
+            VideotoMp3()
         elif Choice == 3:
+            PlaylistToMp3()
+        elif Choice == 4:
             cont = False
         else:
-            print("Invalid Choice!!! Enter 1, 2 or 3!!!")
+            print("Invalid Choice!!! Enter 1, 2, 3 or 4!!!")
 
 main()
